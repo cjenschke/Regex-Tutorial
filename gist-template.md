@@ -143,6 +143,38 @@ Briefly summarize the regex you will be describing and what you will explain. In
 
 ### Grouping and Capturing
 
+- In the context of email validation, grouping helps organize different segments of the email address, such as the username, domain, and TLD.
+
+  `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
+
+  - `([a-z0-9_\.-]+)` This group captures the username part of the email address. It matches one or more lowercase letters, digits, underscores, hyphens, or dots.
+
+  - `([\da-z\.-]+)` This group captures teh domain part of teh email address. Again it matches one or more lowercase letters, digits, underscores, hyphens, or dots.
+
+  - `([a-z\.]{2,6})` This group capture the TLD. It matches between 2 to 6 lowercase letters or dots, which is typically the domain extension (e.g., com, org).
+
+  - By using these groups, we can extract and use the captured values in our code.
+
+    ```javascript
+    const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+    const email = 'example@email.com';
+    const match = email.match(emailRegex);
+
+    if (match) {
+      const username = match[1];
+      const domain = match[2];
+      const tld = match[3];
+
+      console.log('Username:', username);
+      console.log('Domain:', domain);
+      console.log('TLD:', tld);
+    } else {
+      console.log('Invalid email address');
+    }
+    ```
+
+    - In this example, the `match` method is used to find the captured groups in the email address. Grouping and capturing make it easier to work with complex patterns like email validation, allowing you to extract specific parts of the matching text for further validation or processing.
+
 ### Bracket Expressions
 
 ### Greedy and Lazy Match
