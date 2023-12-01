@@ -28,6 +28,20 @@ Briefly summarize the regex you will be describing and what you will explain. In
 
 ### Anchors
 
+- Anchors are regex elements that don't match any characters but define specific positions with the text. The two common anchors are the caret `^` and the dollar sign `$`.
+
+  `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
+
+  - Caret (^) Anchor
+
+    - In our email validation regex the caret `^` anchor is used at the beginning of the pattern to assert that the matching text must start at the beginning of a string. It ensures that the email address must start with the username component and not with any preceding characters.
+
+  - Dollar ($) Anchor
+
+    - In our email validation regex the `$` anchor is used at the end of the pattern to ensure that the match must end at the end of the string. In this case, it ensures that the email address must end with the top-level domain (TLD) component and not have any additional characters after it.
+
+- These anchors ensure that the entire email address is checked from start to finish, providing a precise match. In the context of email validation, they help make sure that the email format adheres to the rules throughout the string.
+
 ### Quantifiers
 
 ### OR Operator
