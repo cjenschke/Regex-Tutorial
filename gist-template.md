@@ -44,6 +44,25 @@ Briefly summarize the regex you will be describing and what you will explain. In
 
 ### Quantifiers
 
+- Quantifiers control the number of times a character or a group of characters can appear in a pattern. They determine whether a specific element should be matched once, multiple times.
+
+  - `+` Quantifier
+    `: [a-z0-9_\.-]+`
+
+    - The `+` quantifier means "one or more." In this example one or more lowercase letters (`a-z`), digits (`0-9`), underscores (`_`), periods (`.`), or hyphens (`-`) must be used in the username component of the email address. This ensures that there must be at least one character before the `@` symbol.
+
+  - `*` Quantifier
+    `[\/\w \.-]*`
+
+    - The `*` quantifier means "zero or more." In this example zero or more characters can be slashes (`/`), word characters (`/w` included letters, digits, and underscores), spaces(`  `), periods (`.`), or hyphens (`-`). This is used for the optional path or query component in a URL that may follow the domain.
+
+  - `{2,6}` Quantifier
+    `[a-z\.]{2,6}`
+
+    - The `{2,6}` quantifier allows specifying a range of repetitions. In this example, matches between 2 and 6 lowercase letters (`a-z`) or periods (`.`) in the top-level domain (TLD) components of the email address. This ensures that the TLD is 2 to 6 characters long.
+
+- These quantifiers play a crucial role in specifying the allowed patterns for different parts of an email address, making sure they match the desired format while accommodating variations.
+
 ### OR Operator
 
 ### Character Classes
