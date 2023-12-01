@@ -177,7 +177,78 @@ Briefly summarize the regex you will be describing and what you will explain. In
 
 ### Bracket Expressions
 
+- Bracket expressions allow us to specify a set of characters that we want to match within our regex pattern. In email validation we use character classes to define allowable characters for different parts of an email address.
+
+  `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
+
+  - `[a-z0-9_\.-]` This character class matches lowercase letters (a-z), digits (0-9), underscores (\_), periods (.), and hyphens (-). Any character within this set is considered valid in the username.
+
+  - `[\da-z\.-]` This character class matches digits (\d), lowercase letters (a-z), periods (.), and hyphens (-). This allows for alphanumeric domain names, periods for subdomains, and hyphens for hyphenated domain names.
+
+  - `[a-z\.]{2,6}` This character class matches lowercase letters (a-z) and periods (.) and quantifies them with `{2,6}` to ensure that the TLD portion of the email address has between 2 and 6 characters. this helps ensure that TLDs like .com, .org, or .co.uk are matched correctly.
+
+  ````javascript
+  // Match the username part of an email address
+  const usernameRegex = /[a-z0-9_\.-]+/;
+  const username = 'john_doe123'; // Replace with an actual username
+  if (usernameRegex.test(username)) {
+    console.log('Username is valid');
+  } else {
+    console.log('Username is invalid');
+  }
+
+    // Match characters in the domain part of an email address
+    const domainRegex = /[\da-z\.-]+/;
+        const domain = "example.com"; // Replace with an actual domain
+    if (domainRegex.test(domain)) {
+    console.log("Domain is valid");
+    } else {
+    console.log("Domain is invalid");
+    }
+
+    // Match the top-level domain (TLD) of an email address
+    const tldRegex = /[a-z\.]{2,6}/;
+    const tld = "com"; // Replace with an actual TLD
+        if (tldRegex.test(tld)) {
+    console.log("TLD is valid");
+    } else {
+    console.log("TLD is invalid");
+    }```
+  ````
+
+  - In this example it demonstrates how you can use character classes to match and validate different parts of an email address. The character classes define the valid character sets for usernames, domains, and TLDs, allowing you to check whether each part of the email address conforms to the expected format.
+
 ### Greedy and Lazy Match
+
+- Greedy Match. In email validation, you can use greedy matching to capture the longest possible sequences for components like the domain name.
+
+  `/^(.+)@(.+)$/`
+
+  - `^` and `$` anchors ensure that the entire string is matched.
+
+  - `(.+)` captures the username part of the email address.
+
+  - `@` matches the "@" symbol.
+
+  - `(.+)` captures the domain part of the email address.
+
+  - With this regex, the username and domain parts will capture as much as they can until they reach teh "@" symbol. For example, for the email "john.doe@example.com" the username will capture "john.doe@example" and the domain will capture "com."
+
+- Lazy Match. In email validation, you can use lazy matching to capture the shortest possible sequence.
+
+  `/^(.+?)@(.+?)$/`
+
+  - `^` and `$` anchors ensure that the entire string is matches.
+
+  - `(.+?)` captures the username part of the email address.
+
+  - `@` matches the "@" symbol.
+
+  - `(.+?)` captures the domain part of the email address.
+
+  - With this regex, the username and domain parts will capture the shortest sequences possible while still forming a valid email address. For example, for the email "john.doe@example.com" the username will capture "john.doe" and the domain will capture "example."
+
+- Using greedy and lazy matching in your email validation regex gives you control over how much text is captured by the regex components, allowing you to adapt the regex to your specific needs.
 
 ### Boundaries
 
@@ -188,6 +259,10 @@ Briefly summarize the regex you will be describing and what you will explain. In
 ## Author
 
 A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+
+```
+
+```
 
 ```
 
