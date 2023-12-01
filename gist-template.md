@@ -1,6 +1,10 @@
-# Title (replace with your title)
+# Solving the Email Validation Puzzle with Regex
 
-Introductory paragraph (replace this with your text)
+Summary
+
+In this tutorial, we will dive into the world of regular expressions and explore how to validate email addresses using a specific regex pattern. The regex we'll be focusing on is:
+`javascript`
+`/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
 
 ## Summary
 
@@ -47,3 +51,7 @@ Briefly summarize the regex you will be describing and what you will explain. In
 ## Author
 
 A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+
+```
+
+```
