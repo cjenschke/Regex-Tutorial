@@ -284,11 +284,52 @@ Briefly summarize the regex you will be describing and what you will explain. In
 
 ### Back-references
 
+- In the context of email validation, back-references can be used to ensure that the local part and the domain part of the email address match.
+
+  ```javascript
+  /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+  ```
+
+  - `([a-z0-9_\.-]+)` part captures the local part of the email address.
+
+  - `([\da-z\.-]+)` part captures the domain name.
+
+  - `([a-z\.]{2,6})` part captures the TLD, allowing 2 to 6 lowercase letters or dots.
+
+    ```javascript
+    /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+                        |-------- Back-reference --------|
+    ```
+
+    - The `\3` back-reference is used to match whatever was captured in the third group exactly.
+
+      - Example of valid email address
+      - Email: john.doe@email.com
+
+        - The local part captures "john.doe."
+        - The domain part captures "email."
+        - The TLD captures "com."
+        - The back-reference `\3` ensures that "com" matches the TLD part, which is correct.
+
+      - Example of invalid email address
+      - Email: john@doe@example
+        - The local part captures "john."
+        - The domain part captures "doe."
+        - The TLD captures "example" which is not a valid TLD. An example of a valid TLD should be ".com," ".org," or ".net."
+
 ### Look-ahead and Look-behind
 
 ## Author
 
 A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+
+```
+
+```
+
+```
+
+```
 
 ```
 
