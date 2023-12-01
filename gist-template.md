@@ -252,6 +252,36 @@ Briefly summarize the regex you will be describing and what you will explain. In
 
 ### Boundaries
 
+- For email validation, we use word boundaries (`\b`) to ensure that the email pattern matches the entire email address and doesn't partially match within other text.
+
+  ```javascript
+  const emailRegex = /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/;
+
+  const validEmail1 = 'user@example.com'; // Valid email
+  const validEmail2 = 'john.doe123@example.co.uk'; // Valid email
+  const invalidEmail1 = 'notanemail.com'; // Invalid email
+
+  console.log(emailRegex.test(validEmail1)); // true
+  console.log(emailRegex.test(validEmail2)); // true
+  console.log(emailRegex.test(invalidEmail1)); // false
+  ```
+
+  - `\b` The `\b` word boundary asserts that the pattern `[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}` should match the entire email address.
+
+  - `[a-zA-Z0-9._%+-]+` Matches on or more valid characters in the local part of the email address.
+
+  - `@` Matches teh "@" symbol.
+
+  - `[a-zA-Z0-9.-]+` Matches one or more valid characters in the domain part of the email address.
+
+  - `\.` Matches the dot(.) separator between the domain and the TLD.
+
+  - `[a-zA-Z]{2,}` Matches the TLD, ensuring it consists of at least two letters.
+
+  - `\b` Another word boundary to ensure the pattern matches the entire email address.
+
+- Using work boundaries helps prevent partial matches within longer strings and ensures the email address is matched as a whole.
+
 ### Back-references
 
 ### Look-ahead and Look-behind
