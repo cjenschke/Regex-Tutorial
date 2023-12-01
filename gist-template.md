@@ -113,6 +113,34 @@ Briefly summarize the regex you will be describing and what you will explain. In
 
 ### Flags
 
+- Flags in regular expressions are modifiers that affect how the regex pattern is matched. In the context fo email validation, two common flags are the `i` (case-insensitive) and `g` (global) flags.
+
+  - Case -Insensitive Matching (`i` flag)
+
+  ```javascript
+  const emailRegex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i;
+
+  console.log(emailRegex.test('user@example.com')); // true
+  console.log(emailRegex.test('User@Example.com')); // true
+  console.log(emailRegex.test('UPPERCASE@EXAMPLE.COM')); // true
+  ```
+
+  - The `i` flag makes the regex pattern match case-insensitively. For email validation, this allows both uppercase and lowercase characters in email addresses. In the above code snippet by putting the `i` flag at the end of the regex pattern (`/i`) ensures that both uppercase and lowercase characters can be used.
+
+  - Global Matchings (`g` flag)
+
+  ```javascript
+  const text =
+    'Contact us at user1@example.com or user2@example.com for assistance.';
+  const emailRegex = /([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})/g;
+  const emailMatches = text.match(emailRegex);
+  console.log(emailMatches);
+  ```
+
+  - The `g` flag is used when you want to find all matches in a given string rather than stopping after the first match. This can be useful in scenarios where you need to find and extract multiple email addresses from a larger text. In the code snippet above, we define the `emailRegex` with the `g` flag (`/g`). When we use `text.match(emailRegex)` it returns an array of all email addresses found in the `text` string.
+
+- These flags provide additional flexibility and functionality when working with regular expressions for email validation.
+
 ### Grouping and Capturing
 
 ### Bracket Expressions
@@ -128,6 +156,14 @@ Briefly summarize the regex you will be describing and what you will explain. In
 ## Author
 
 A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+
+```
+
+```
+
+```
+
+```
 
 ```
 
