@@ -83,6 +83,34 @@ Briefly summarize the regex you will be describing and what you will explain. In
 
 ### Character Classes
 
+- Character classes are used to define a set of characters that can match at a specific position in the string. In email validation regex, we use character classes to match certain character ranges within the username and domain components.
+
+  - Username Component `/[a-z0-9_\.-]+/`
+
+    - In this part of the regex, we use character classes to define the valid characters for the username portion of the email address.
+
+    - `[a-z]` This character class matches lowercase letters (a-z).
+
+    - `[0-9]` This character class matches digits (0-9).
+
+    - `_` this matches the underscore character.
+
+    - `\.` This matches the period character.
+
+    - `+` The plus sign indicates that one or more of these characters must appear in the username.
+
+  - Domain Component `/[\da-z\.-]+/`
+
+    - In the domain part of the regex, we again use character classes to define valid characters.
+
+    - `[\da-z]` This character class matches lowercase letters and digits.
+
+    - `\.` This matches the period character.
+
+    - `+` The plus sign indicates that one or more of these characters must appear in the domain.
+
+- By using character classes in these components, we specify which characters are allowed and create a pattern for valid email addresses. For example the email address "john.doe@example.com" will match the username "john.doe" and the domain "example.com" based on the character classes.
+
 ### Flags
 
 ### Grouping and Capturing
