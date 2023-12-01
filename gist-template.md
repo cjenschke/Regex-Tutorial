@@ -319,6 +319,20 @@ Briefly summarize the regex you will be describing and what you will explain. In
 
 ### Look-ahead and Look-behind
 
+- Look-ahead and Look-behind assertions are helpful in email validation to ensure specific conditions are met without capturing unnecessary characters.
+
+  - Look-ahead example
+
+    `/^[a-z0-9_\.-]+(?=@[\da-z\.-]+\.[a-z\.]{2,6}$)/`
+
+    - `(?=@[\da-z\.-]+\.[a-z\.]{2,6}$)` is a positive look-ahead assertion. It checks that the `@` symbol is followed by a valid domain name.
+
+  - Look-behind example
+
+    `/(?<!\s)[a-z0-9_\.-]+@[\da-z\.-]+\.[a-z\.]{2,6}$/`
+
+    - `(?<!\s)` is a negative look-behind assertion. It checks that there is no whitespace character before the email address.
+
 ## Author
 
 A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
