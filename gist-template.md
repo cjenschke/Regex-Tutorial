@@ -65,6 +65,22 @@ Briefly summarize the regex you will be describing and what you will explain. In
 
 ### OR Operator
 
+- In email addresses, the OR operator can be used to handle variations in the local part (before the "@" symbol) or domain part (after the "@" symbol). For example, email domains can be either generic top-level domains (gTLDs) like ".com" or country code top-level domains (ccTLDs) like ".uk".
+
+  `/^(example|test|user)@(gmail\.com|yahoo\.com|hotmail\.com)$/`
+
+  - The `^` marks the beginning of the string.
+
+  - `(example|test|user)` Thss part of the regex used the OR operator `|` to match variations in the local part. It will match if teh local part is "example," "test,", or "user."
+
+  - The `@` matches the "@" symbol in the email address.
+
+  - `(gmail\.com|yahoo\.com|hotmail\.com)` This part used teh OR operator to match different domain options. It will match if the domain part is either "gmail.com," "yahoo.com," or "hotmail.com."
+
+  - The `$` marks the end fo the string.
+
+- In this OR operator example the regex pattern will validate email addresses like "example@gmail.com," "test@yahoo.com," or "user@hotmail.com." You can adjust the options within the `()` to match specific variations you want to allow in email addresses. The OR operator provides flexibility in handling different formats while ensuring they conform to the expected pattern.
+
 ### Character Classes
 
 ### Flags
